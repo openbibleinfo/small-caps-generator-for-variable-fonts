@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' blob:; worker-src blob:; style-src 'unsafe-inline'; font-src blob: data:; img-src data:; connect-src https:">
+  <title>Small-caps generator for variable fonts</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+<nav class="skip-links" aria-label="Skip links"><a href="#google-font">Skip to font controls</a><a href="#review-scroll">Skip to comparison</a></nav>
+<main class="application">
+<header class="app-header"><h1>Small-caps generator for variable fonts</h1><p class="description">Create and compare small-caps for installed or Google fonts (created with AI).</p><button id="share" type="button" disabled>Share</button></header>
+<dialog id="share-dialog" aria-labelledby="share-title" aria-describedby="share-note"><div class="section-top"><h2 id="share-title">Share these settings</h2><button id="share-close" type="button">Close</button></div><label for="share-url">Link</label><input id="share-url" type="text" readonly aria-describedby="share-note"><p id="share-note" class="muted" aria-live="polite"></p><p id="share-feedback" class="sr-only" role="status"></p><button id="share-copy" type="button">Copy link</button></dialog>
+<div class="app-shell">
+<aside id="sidebar" aria-label="Font and recipe controls" tabindex="0">
+  <section class="source panel">
+    <form id="google-form"><label>Google font, local font name, or font URL<input id="google-font" aria-describedby="font-drop-hint" type="text" list="google-families" placeholder='Roboto, "Local Family", or https://…/font.woff2' required></label><datalist id="google-families"></datalist><button id="google-load">Generate small-caps</button></form>
+    <p id="status" role="status" aria-live="polite" aria-atomic="true">Preparing the font analyzer…</p>
+    <p id="font-drop-hint" class="font-drop-hint muted">Choose a suggested Google family to load it immediately, or press Generate small-caps. You can also drop a font file here or use the file picker below.</p>
+    <details><summary>Installed fonts &amp; local files</summary>
+      <button id="installed-list" aria-describedby="installed-note" type="button">Choose an installed font…</button>
+      <p id="installed-note" class="muted"></p>
+      <div id="installed-picker" hidden><label>Installed face<select id="installed-font"></select></label><button id="installed-load" type="button">Use installed face</button></div>
+      <label class="upload">Open a variable font file<input id="upload" type="file" accept=".ttf,.otf,.woff,.woff2"></label>
+    <p class="muted">Google suggestions apply immediately. For an installed font, enter one name and press Enter. Lists are not supported. Installed families are measured in the browser without font-file access; static fonts are supported. Quote a name to prefer its local version over Google. Fonts available only inside an app, such as Office cloud fonts, may need system installation first.</p>
+    <p class="muted">File imports require a variable weight axis. Choose a Google family/link/CSS embed, or paste a direct HTTPS WOFF, WOFF2, TTF or OTF URL (16 MB maximum). The font host must allow CORS, including access from local files. All processing is done in your browser; no data is sent to a server. A usable width axis enables independent width fitting.</p>
+    </details>
+    <details id="font-summary" hidden><summary>Font details</summary><p id="smcp-support" class="muted"></p><p id="font-capabilities" class="muted" hidden></p></details>
+  </section>
+
+      <section id="recipe-controls" class="panel controls" hidden>
+        <h2 class="recipe-heading">The recipe</h2>
+        <button id="recipe-toggle" type="button" aria-expanded="false" aria-controls="recipe-body">The recipe <span aria-hidden="true">+</span></button>
+        <div id="recipe-body">
+        <label>Calibration<select id="target" aria-describedby="target-note"><option value="reference">Automatic</option><option value="xheight">Match x-height</option></select></label>
+        <p id="target-note" class="muted"></p>
+        <label>Width method<select id="width-method"><option value="auto">Automatic — wdth when available, scaling otherwise</option><option value="unscaled">Font axes only — no scaling</option><option value="transform">Horizontal scaling — scaleX</option></select></label>
+        <label>Initial letter<select id="initial-mode"><option value="smcp">Full-size initial (smcp style)</option><option value="c2sc">All small-caps (c2sc style)</option></select></label>
+        <div id="axes"></div>
+        <button id="fit" type="button">Fit to font evidence</button>
+        <div class="divider"></div>
+        <div class="height-heading"><label for="scale">Height scale</label><button id="set-xheight" type="button" aria-label="Set height scale to x-height" title="Set to x-height">x-height</button><output id="scale-out"></output></div>
+        <input id="scale" type="range" min="0.45" max="1.1" step="0.0005">
+        <label for="width"><span id="width-label">Small-cap width</span> <output id="width-out"></output></label>
+        <input id="width" type="range" min="50" max="200" step="0.01">
+        <label for="weight">Small-cap weight <output id="weight-out"></output></label>
+        <input id="weight" type="range" min="100" max="900" step="0.1">
+        <label for="tracking">Tracking (em) <output id="tracking-out"></output></label>
+        <input id="tracking" type="range" min="-0.12" max="0.12" step="0.001" value="0">
+        <label for="gap">After initial (em) <output id="gap-out"></output></label>
+        <input id="gap" type="range" min="-0.1" max="0.1" step="0.001" value="0">
+        <label for="reading-size">Export font size (px) <output id="reading-size-out"></output></label>
+        <input id="reading-size" type="range" min="10" max="72" step="1" value="18">
+        <label>Optical size <small id="optical-none" class="inline-note" hidden>(none)</small><select id="optical-policy" aria-describedby="optical-note"><option value="pinned">Keep the selected opsz</option><option value="linked">Follow export font size</option></select></label>
+        <p id="optical-note" class="muted"></p>
+        <label for="size">Inspection size (px) <output id="size-out"></output></label>
+        <input id="size" type="range" min="12" max="80" step="1" value="48">
+        <p class="muted">Width adjusts wdth in fitted and built-in small-caps when available; otherwise it adjusts only the horizontal-scaling row and export (scaleX, where 1 means unchanged width). Automatic height, weight, and tracking are fitted separately for each recipe; the controls show the selected fitted recipe’s values. Height changes apply to the fitted small-caps. Small-cap weight applies to fitted small-caps; Built-in uses the text weight. Manual tracking also applies to Built-in. Full-size initials stay unchanged. After initial adjusts the gap in all small-caps previews and exports; it is unused in all-small-caps mode. Tune weight and tracking at reading size on your target OS and browser: hinting and antialiasing can change apparent darkness.</p>
+        </div>
+      </section>
+</aside>
+<div class="app-main">
+<p id="action-status" class="sr-only" role="status" aria-atomic="true"></p>
+<nav id="review-tabs" class="tab-bar" role="tablist" aria-label="Workspace view">
+  <button id="preview-tab" type="button" role="tab" aria-selected="true" aria-controls="preview-panel" data-view="preview">Preview</button>
+  <button id="outlines-tab" type="button" role="tab" aria-selected="false" aria-controls="outlines-panel" data-view="outlines" tabindex="-1">Outlines</button>
+  <button id="research-tab" type="button" role="tab" aria-selected="false" aria-controls="research-panel" data-view="research" tabindex="-1">Font research</button>
+</nav>
+<div id="review-scroll" role="region" tabindex="0" aria-label="Font comparison">
+<div id="empty-state"><h2>Start with a font</h2><p>Choose a Google font, enter an installed family, or open a font file using the panel on the left.</p><p class="muted">Your preview, outline comparison, and CSS will appear here.</p></div>
+<div id="workspace" hidden>
+<div class="workbench"><section id="preview-panel" tabindex="0" class="panel previews review-view active" role="tabpanel" aria-labelledby="preview-tab">
+        <label class="sr-only" for="sample">Sample text</label>
+        <span id="sample-hint" class="sr-only">Uppercase words become initial + small-caps</span>
+        <input id="sample" title="Uppercase words become initial + small-caps" aria-describedby="sample-hint" type="text" value="The LORD is my shepherd" maxlength="180">
+        <div id="comparison-tabs" class="tab-bar" role="tablist" aria-label="Comparison view">
+          <button id="comparison-size-tab" type="button" role="tab" aria-selected="true" aria-controls="size-comparison">Size</button>
+          <button id="comparison-overlay-tab" type="button" role="tab" aria-selected="false" aria-controls="overlay-comparison" tabindex="-1">Overlay</button>
+        </div>
+        <div class="specimen" id="size-comparison" role="tabpanel" aria-labelledby="comparison-size-tab" tabindex="0">
+        <div id="preview-lines" class="preview-lines" role="group" aria-labelledby="preview-lines-label">
+          <span id="preview-lines-label">Show lines</span>
+          <label><input type="checkbox" data-preview-toggle="all-caps" checked> All caps</label>
+          <label><input type="checkbox" data-preview-toggle="naive" checked> Naive browser</label>
+          <label><input type="checkbox" data-preview-toggle="calibrated" checked> Font-axis fit</label>
+          <label><input type="checkbox" data-preview-toggle="transformed" checked> Horizontal scaling</label>
+          <label><input type="checkbox" data-preview-toggle="native" checked> <span id="native-toggle-label">Built-in</span></label>
+        </div>
+          <div id="size-ladder"></div>
+        </div>
+        <div class="specimen" id="overlay-comparison" role="tabpanel" aria-labelledby="comparison-overlay-tab" tabindex="0" hidden>
+          <div class="overlay-controls">
+            <label><span class="overlay-dot overlay-first-color" aria-hidden="true"></span> Compare<select id="overlay-first" aria-controls="overlay-preview"></select></label>
+            <label><span class="overlay-dot overlay-second-color" aria-hidden="true"></span> Against<select id="overlay-second" aria-controls="overlay-preview"></select></label>
+          </div>
+          <p id="overlay-note" class="muted">The bottom two available lines are overlaid on a shared baseline.</p>
+          <div id="overlay-preview" tabindex="0" aria-describedby="overlay-note" role="img" aria-label="Overlaid font comparison"></div>
+        </div>
+        <div id="metrics" class="metrics"></div>
+      </section></div>
+<section id="outlines-panel" tabindex="0" class="panel evidence review-view" role="tabpanel" aria-labelledby="outlines-tab" aria-hidden="true" inert>
+      <div class="section-top"><h2>Compare the outlines · <span id="evidence-mode">selected output</span></h2><span class="legend"><i></i> <span id="evidence-reference">reference</span> (dashed edge) <i></i> simulated (solid edge)</span></div>
+      <p id="evidence-note" class="muted"></p>
+      <div id="glyphs" class="glyphs"></div>
+      <p class="muted">Overlays share a baseline and align left ink edges. Dashed guides mark x-height and the target. Outlines are unhinted; judge the live text at your intended reading size too.</p>
+      <div id="errors" class="metrics"></div><div id="warnings"></div>
+    </section>
+</div>
+    <section id="research-panel" tabindex="0" class="panel evidence review-view" role="tabpanel" aria-labelledby="research-tab" aria-hidden="true" inert>
+<div class="section-top"><h2>How fonts compare</h2><label>References<select id="corpus-cohort"><option value="all">All families</option><option value="top500">Top-500 families</option><option value="top300">Top-300 families</option><option value="top200">Top-200 families</option><option value="top100">Top-100 families</option><option value="top50">Top-50 families</option></select></label><label>Compare <select id="corpus-measure"><option value="width">Glyph-width change</option><option value="widthError">Remaining ink-width error</option><option value="weightChange">Weight-axis change</option><option value="tracking">Tracking</option><option value="stroke">Native vertical stem uplift</option></select></label><label>Text weight <select id="corpus-weight"><option>400</option><option selected>500</option><option>700</option></select></label><label>Optical design<select id="corpus-opsz"><option value="default">Each font’s default</option><option value="min">Each font’s smallest</option><option value="max">Each font’s largest</option></select></label></div>
+      <p class="muted">CSS-only calibration: actual wght/wdth axes, no geometric stretching. Green squares = serif; orange circles = sans-serif. Roboto Mono is grouped by its sans-serif letterforms. Reference type and width-axis availability are listed in the table and tooltips. Numbers identify table rows. Optical designs use each font’s own endpoint, not a shared numeric size; base width and other axes stay at defaults. These measurements are embedded and work offline; extra font files are not bundled.</p>
+      <div id="averages" class="metrics"></div>
+      <div class="graph-toolbar">
+        <label class="graph-number-toggle"><input id="corpus-numbers" type="checkbox" checked> Show point numbers</label>
+      </div>
+      <p id="graph-help" class="muted">Orange circles: sans-serif. Green squares: serif. Focus a point and use arrow keys to explore; Home and End move to the first and last point. <a href="#corpus-table-region">Read the measurements table</a>.</p>
+      <div id="corpus-plot" role="region" aria-label="Research graph" tabindex="0"></div>
+      <p id="corpus-detail" class="muted" aria-live="polite">Hover or focus a point for its measurements; the complete values are in the table.</p>
+      <div id="corpus-table-region" class="table-scroll" role="region" aria-label="Font research measurements" tabindex="0"><table id="corpus-table"></table></div>
+      <p id="corpus-note" class="muted"></p>
+    <footer>Measured locally, at the selected axes. No uploads, analytics, or storage. Font URLs are fetched only when requested; local files and the measurement chart work offline. No font files are embedded. A best-fit approximation is not a substitute for drawn small-caps. <details><summary>Bundled library licenses</summary><pre role="region" id="licenses" tabindex="0" aria-label="Bundled library licenses"></pre></details></footer>
+    </section>
+
+</div>
+<section id="export-dock" aria-label="Code export" hidden>
+<button id="export-toggle" type="button" aria-expanded="false" aria-controls="export-body"><span>Code export</span><span id="export-toggle-label">Show code ↑</span></button>
+<div id="export-body" hidden>
+<div class="export-toolbar"><label for="export-target">Format</label><select id="export-target"><option value="web">HTML / CSS</option><option value="typst">Typst</option><option value="latex">LaTeX (LuaLaTeX)</option></select><span class="export-label">Recipe</span>
+<div id="transform-width-mode" class="tab-bar" role="tablist" aria-label="Recipe">
+  <button id="width-unscaled" type="button" role="tab" aria-selected="false" aria-controls="export-content" data-width-mode="unscaled" tabindex="-1">Font-axis</button>
+  <button id="width-precomputed" type="button" role="tab" aria-selected="true" aria-controls="export-content" data-width-mode="precomputed">Scaling · CSS</button>
+  <button id="width-javascript" type="button" role="tab" aria-selected="false" aria-controls="export-content" data-width-mode="javascript" tabindex="-1">Scaling · JavaScript</button>
+  <button id="width-none" type="button" role="tab" aria-selected="false" aria-controls="export-content" data-width-mode="none" tabindex="-1">Naive</button>
+  <button id="width-builtin" type="button" role="tab" aria-selected="false" aria-controls="export-content" data-width-mode="builtin" tabindex="-1" hidden>Built-in</button>
+</div></div>
+<div id="export-content" role="tabpanel" aria-labelledby="width-precomputed" tabindex="0">
+    <section id="web-export" class="panel export">
+      <div class="section-top"><h2>Copy the chosen CSS</h2><button id="copy-css" type="button">Copy CSS</button></div>
+      <p id="export-mode-note" class="muted"></p>
+      <pre role="region" tabindex="0" aria-label="Selectable small-caps CSS"><code id="css-export"></code></pre>
+<section id="javascript-export" hidden>
+        <div class="section-top"><h2>JavaScript</h2><button id="copy-js" type="button">Copy JavaScript</button></div>
+        <p class="muted">Run after the small-caps markup, or load with defer.</p>
+        <pre role="region" tabindex="0" aria-label="Selectable width-correction JavaScript"><code id="js-export"></code></pre>
+      </section>
+<details class="export-help"><summary>Usage and fit details</summary>
+<p id="transform-mode-note" class="muted"></p>
+      <p id="css-usage" class="muted">Use <code>&lt;span class="smcp"&gt;Lord&lt;/span&gt;</code> inside <code>.smcp-text</code>. One span per word, spaces outside.</p>
+
+</details>
+    </section>
+<section id="typeset-export" class="panel export" hidden>
+<div class="section-top"><h2 id="typeset-title"></h2><div><button id="copy-typeset" type="button">Copy code</button> <button id="download-typeset" type="button">Download</button></div></div>
+<p id="typeset-note" class="muted"></p>
+<pre role="region" tabindex="0" aria-label="Selectable typesetting code"><code id="typeset-code"></code></pre>
+</section>
+<details id="web-recipe" class="full-recipe"><summary id="full-recipe-label">HTML + CSS and measurements</summary>
+    <section class="panel export">
+      <div class="section-top"><h2>Take the recipe with you</h2><button id="copy" type="button">Copy HTML + CSS</button></div>
+      <p class="muted">The recipe below includes the markup and any width-correction script required by your selected mode. URL imports retain their source; installed faces use local(). File imports need your own licensed font URL.</p>
+      <pre role="region" tabindex="0" aria-label="Complete export recipe"><code id="export"></code></pre>
+      <details><summary>Font verification &amp; measurements</summary><pre role="region" id="diagnostics" tabindex="0" aria-label="Font verification and measurements"></pre><button id="download" type="button">Download measurements JSON</button></details>
+    </section>
+</details>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body>
+</html>

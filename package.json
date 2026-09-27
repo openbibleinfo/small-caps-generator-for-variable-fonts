@@ -1,0 +1,24 @@
+{
+  "name": "small-cap-lab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node tests/engine.cjs && node tests/corpus.cjs && node tests/share-state.mjs",
+    "test:fixtures": "python3 tests/fixtures.py",
+    "test:browser": "npm run build && npm run test:fixtures && node tests/color-font.mjs && node tests/run-browser.cjs",
+    "test:all": "npm test && npm run test:browser"
+  },
+  "dependencies": {
+    "buffer": "6.0.3",
+    "fontkit": "2.0.4",
+    "tiny-inflate": "1.0.3",
+    "wawoff2": "2.0.1"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "esbuild": "0.25.12",
+    "playwright": "^1.63.0"
+  }
+}

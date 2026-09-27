@@ -1,0 +1,325 @@
+{
+  "method": "Equal-family medians; default optical designs; weight interpolation over 400–700",
+  "priorAt500": {
+    "heightFraction": 0.25474254742547425,
+    "width": 1.0921237126439507,
+    "tracking": 0.04847209497287101,
+    "families": 51,
+    "method": "Equal-family medians; default optical designs; weight interpolation over 400–700",
+    "weight": 500
+  },
+  "validation": "Leave-one-family-out at weight 500, default optical design; related designs are not independent. Errors compare proportions, not visual quality.",
+  "medianErrors": {
+    "heightErrorPercent": 2.335706971044771,
+    "widthErrorPercent": 2.3021250555579575,
+    "trackingErrorEm": 0.022127742172690423
+  },
+  "families": [
+    {
+      "family": "Roboto",
+      "heightErrorPercent": 1.0758209557280018,
+      "widthErrorPercent": 0.0422445109782954,
+      "trackingErrorEm": 0.0022642737540492577
+    },
+    {
+      "family": "Google Sans",
+      "heightErrorPercent": 3.0788493100706416,
+      "widthErrorPercent": 0.8513700937583524,
+      "trackingErrorEm": 0.01469709036284838
+    },
+    {
+      "family": "Montserrat",
+      "heightErrorPercent": 0.9549707213693415,
+      "widthErrorPercent": 5.68434800380464,
+      "trackingErrorEm": 0.014426195755935026
+    },
+    {
+      "family": "Roboto Condensed",
+      "heightErrorPercent": 1.0758209557280018,
+      "widthErrorPercent": 0.2589275647117528,
+      "trackingErrorEm": 0.004008263556263061
+    },
+    {
+      "family": "Roboto Mono",
+      "heightErrorPercent": 1.0758209557280018,
+      "widthErrorPercent": 7.301707073787145,
+      "trackingErrorEm": 0.10142425373036747
+    },
+    {
+      "family": "Noto Sans",
+      "heightErrorPercent": 1.5132899202466854,
+      "widthErrorPercent": 5.181408742948879,
+      "trackingErrorEm": 0.04250853589711951
+    },
+    {
+      "family": "Raleway",
+      "heightErrorPercent": 3.4522856145052128,
+      "widthErrorPercent": 0.7196558249304874,
+      "trackingErrorEm": 0.034537404747172346
+    },
+    {
+      "family": "Roboto Slab",
+      "heightErrorPercent": 1.0758209557280018,
+      "widthErrorPercent": 0.40756267525471346,
+      "trackingErrorEm": 0.004526414622631793
+    },
+    {
+      "family": "Merriweather",
+      "heightErrorPercent": 6.662545180725166,
+      "widthErrorPercent": 1.159464073876837,
+      "trackingErrorEm": 0.012867425699200838
+    },
+    {
+      "family": "Playfair Display",
+      "heightErrorPercent": 7.1383228408394945,
+      "widthErrorPercent": 2.159447354490862,
+      "trackingErrorEm": 0.02247537037491623
+    },
+    {
+      "family": "Work Sans",
+      "heightErrorPercent": 3.482292094092887,
+      "widthErrorPercent": 1.8106899646491703,
+      "trackingErrorEm": 0.005569273844872831
+    },
+    {
+      "family": "Source Sans 3",
+      "heightErrorPercent": 1.996638583905086,
+      "widthErrorPercent": 0.2314799098025344,
+      "trackingErrorEm": 0.017134660756757736
+    },
+    {
+      "family": "Cormorant Garamond",
+      "heightErrorPercent": 4.594951574163875,
+      "widthErrorPercent": 2.344327739401697,
+      "trackingErrorEm": 0.005081864925657091
+    },
+    {
+      "family": "Noto Serif",
+      "heightErrorPercent": 1.833227153737771,
+      "widthErrorPercent": 3.1167670618750254,
+      "trackingErrorEm": 0.012312513343225626
+    },
+    {
+      "family": "EB Garamond",
+      "heightErrorPercent": 4.595071490410918,
+      "widthErrorPercent": 1.8880020840238543,
+      "trackingErrorEm": 0.06471750622294874
+    },
+    {
+      "family": "Bitter",
+      "heightErrorPercent": 0.5150461255059802,
+      "widthErrorPercent": 1.1570482516863212,
+      "trackingErrorEm": 0.0258296732499773
+    },
+    {
+      "family": "Source Serif 4",
+      "heightErrorPercent": 4.004980333769225,
+      "widthErrorPercent": 1.047290474789908,
+      "trackingErrorEm": 0.03520603762726546
+    },
+    {
+      "family": "Merriweather Sans",
+      "heightErrorPercent": 6.48912098027008,
+      "widthErrorPercent": 1.9322400168049203,
+      "trackingErrorEm": 0.022821525626537234
+    },
+    {
+      "family": "Bodoni Moda",
+      "heightErrorPercent": 4.720908618500075,
+      "widthErrorPercent": 10.023716968557672,
+      "trackingErrorEm": 0.09321751331407223
+    },
+    {
+      "family": "Orbitron",
+      "heightErrorPercent": 6.165712695368053,
+      "widthErrorPercent": 5.616557246678067,
+      "trackingErrorEm": 0.01131240263440806
+    },
+    {
+      "family": "Alumni Sans",
+      "heightErrorPercent": 4.953923273854155,
+      "widthErrorPercent": 6.673541293304885,
+      "trackingErrorEm": 0.016731941644596265
+    },
+    {
+      "family": "Cormorant",
+      "heightErrorPercent": 4.594951574163875,
+      "widthErrorPercent": 2.344327739401697,
+      "trackingErrorEm": 0.005081864925657091
+    },
+    {
+      "family": "Epilogue",
+      "heightErrorPercent": 1.140807815263778,
+      "widthErrorPercent": 3.924205777372014,
+      "trackingErrorEm": 0.022536949322284366
+    },
+    {
+      "family": "Sofia Sans",
+      "heightErrorPercent": 1.2977912763345034,
+      "widthErrorPercent": 0.5272283854411697,
+      "trackingErrorEm": 0.009672465774348174
+    },
+    {
+      "family": "Vollkorn",
+      "heightErrorPercent": 2.7770180217081553,
+      "widthErrorPercent": 9.3410055039019,
+      "trackingErrorEm": 0.14161558639297134
+    },
+    {
+      "family": "Signika",
+      "heightErrorPercent": 0.1003671161328823,
+      "widthErrorPercent": 3.5035763465457337,
+      "trackingErrorEm": 0.02430194130358987
+    },
+    {
+      "family": "Literata",
+      "heightErrorPercent": 0.29590745062806345,
+      "widthErrorPercent": 0.2759330517194347,
+      "trackingErrorEm": 0.02755794529098189
+    },
+    {
+      "family": "Exo",
+      "heightErrorPercent": 4.749679839149512,
+      "widthErrorPercent": 1.128142065220561,
+      "trackingErrorEm": 0.022127742172690423
+    },
+    {
+      "family": "Andada Pro",
+      "heightErrorPercent": 0.39749917048457206,
+      "widthErrorPercent": 1.5608031903100228,
+      "trackingErrorEm": 0.04537413379946126
+    },
+    {
+      "family": "Playfair",
+      "heightErrorPercent": 7.261164982828527,
+      "widthErrorPercent": 2.7439467934330386,
+      "trackingErrorEm": 0.05186729950532758
+    },
+    {
+      "family": "Baskervville",
+      "heightErrorPercent": 10.24839130634032,
+      "widthErrorPercent": 0.8007950488254312,
+      "trackingErrorEm": 0.040240031732325265
+    },
+    {
+      "family": "Alegreya",
+      "heightErrorPercent": 0.5478528845773489,
+      "widthErrorPercent": 2.3021250555579575,
+      "trackingErrorEm": 0.011079961722761204
+    },
+    {
+      "family": "Encode Sans",
+      "heightErrorPercent": 0.23336533873566934,
+      "widthErrorPercent": 0.08198899146383276,
+      "trackingErrorEm": 0.017003822008278928
+    },
+    {
+      "family": "Noto Sans Display",
+      "heightErrorPercent": 1.5132899202466854,
+      "widthErrorPercent": 4.486098949576012,
+      "trackingErrorEm": 0.04185542781880399
+    },
+    {
+      "family": "Noto Sans Mono",
+      "heightErrorPercent": 1.5132899202466854,
+      "widthErrorPercent": 7.576768846420634,
+      "trackingErrorEm": 0.09657209424982079
+    },
+    {
+      "family": "Alexandria",
+      "heightErrorPercent": 0.11442151147018631,
+      "widthErrorPercent": 6.566265130044391,
+      "trackingErrorEm": 0.010884401738270995
+    },
+    {
+      "family": "Sofia Sans Condensed",
+      "heightErrorPercent": 1.2530721210377793,
+      "widthErrorPercent": 0.17078107103416507,
+      "trackingErrorEm": 0.022067542188387752
+    },
+    {
+      "family": "Signika Negative",
+      "heightErrorPercent": 0.031151964092634987,
+      "widthErrorPercent": 3.6197659849787955,
+      "trackingErrorEm": 0.024363737291700327
+    },
+    {
+      "family": "Jura",
+      "heightErrorPercent": 1.7330176141393538,
+      "widthErrorPercent": 9.922861827490248,
+      "trackingErrorEm": 0.05026129047252638
+    },
+    {
+      "family": "STIX Two Text",
+      "heightErrorPercent": 2.335706971044771,
+      "widthErrorPercent": 0.3296830776268189,
+      "trackingErrorEm": 0.011836177807376898
+    },
+    {
+      "family": "Monda",
+      "heightErrorPercent": 3.4049931375652265,
+      "widthErrorPercent": 7.339066323168919,
+      "trackingErrorEm": 0.0167294796403588
+    },
+    {
+      "family": "Vazirmatn",
+      "heightErrorPercent": 1.0758209557280018,
+      "widthErrorPercent": 0.0422445109782954,
+      "trackingErrorEm": 0.002262140868582528
+    },
+    {
+      "family": "Ubuntu Sans",
+      "heightErrorPercent": 3.1669637060787625,
+      "widthErrorPercent": 5.018790336362522,
+      "trackingErrorEm": 0.015527966096015318
+    },
+    {
+      "family": "Petrona",
+      "heightErrorPercent": 2.61464873679933,
+      "widthErrorPercent": 3.586031791916977,
+      "trackingErrorEm": 0.039179157875399925
+    },
+    {
+      "family": "Noto Serif Display",
+      "heightErrorPercent": 1.833227153737771,
+      "widthErrorPercent": 3.103917620496599,
+      "trackingErrorEm": 0.01101051844452939
+    },
+    {
+      "family": "Georama",
+      "heightErrorPercent": 6.099185057128742,
+      "widthErrorPercent": 0.08441769826899037,
+      "trackingErrorEm": 0.04731000706607078
+    },
+    {
+      "family": "Sofia Sans Extra Condensed",
+      "heightErrorPercent": 1.2530721210377793,
+      "widthErrorPercent": 0.3231018441849698,
+      "trackingErrorEm": 0.029515131323368086
+    },
+    {
+      "family": "REM",
+      "heightErrorPercent": 6.4539500625721224,
+      "widthErrorPercent": 2.959790878136337,
+      "trackingErrorEm": 0.03195818288135491
+    },
+    {
+      "family": "Cormorant Infant",
+      "heightErrorPercent": 4.594951574163875,
+      "widthErrorPercent": 2.3568660950205933,
+      "trackingErrorEm": 0.005081864925657091
+    },
+    {
+      "family": "Big Shoulders",
+      "heightErrorPercent": 6.519546646357776,
+      "widthErrorPercent": 2.404963883362221,
+      "trackingErrorEm": 0.022291186832083462
+    },
+    {
+      "family": "Inter",
+      "heightErrorPercent": 8.499323863740171,
+      "widthErrorPercent": 0.18706668480945599,
+      "trackingErrorEm": 0.017667868969408487
+    }
+  ]
+}

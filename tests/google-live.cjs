@@ -1,0 +1,66 @@
+// Optional network smoke test: fetches public Google fonts directly in Chromium.
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const {pathToFileURL}=require('node:url');
+const path=require('node:path');
+let browser;
+(async()=>{
+  browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,headless:true});
+  const page=await browser.newPage();
+  await page.goto(pathToFileURL(path.resolve('index.html')).href);
+  await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready.'),{},{timeout:60000});
+  await page.locator('#width-method').selectOption('unscaled',{force:true});
+  const directURL='https://rsms.me/inter/font-files/InterVariable.woff2';
+  await page.locator('#google-font').fill(directURL);await page.locator('#google-load').click();
+  await page.waitForFunction(()=>!document.querySelector('#google-load').disabled,{},{timeout:90000});
+  assert.match(await page.locator('#status').innerText(),/^Loaded Inter/);
+  assert((await page.locator('#css-export').innerText()).includes(directURL));
+  console.log('Direct WOFF2 URL loaded from public host with real CORS.');
+  await page.locator('#google-font').fill('Source Sans 3');
+  await page.waitForFunction(()=>!document.querySelector('#google-load').disabled,{},{timeout:90000});
+  assert.match(await page.locator('#status').innerText(),/^Loaded Source Sans 3 · variable weight 200–900 · stored Source Sans 3 recipe/);
+  assert.equal(await page.locator('#diagnostics').evaluate(e=>JSON.parse(e.textContent).font),'Source Sans 3');
+  assert.equal(await page.locator('#axis-wght').getAttribute('min'),'200');
+  assert.equal(await page.locator('#axis-wght').getAttribute('max'),'900');
+  assert.match(await page.locator('#smcp-support').textContent(),/Native small-caps \(smcp\): yes.*26\/26/);
+  assert.equal(await page.locator('#size-ladder > .ladder-row:first-child .ladder-native').isVisible(),true);
+  console.log('Source Sans 3 displays its verified variable range, not its internal style name.');
+  for(const name of ['Roboto','Open Sans','Roboto Serif']){
+    await page.locator('#google-font').fill(name);
+    await page.waitForFunction(()=>!document.querySelector('#google-load').disabled,{},{timeout:90000});
+    const status=await page.locator('#status').innerText();assert.match(status,/^Loaded /);
+    if(name==='Roboto') {
+      assert.match(status,/stored Roboto recipe/);
+      const c=require('../research/corpus.json').fonts.find(f=>f.name==='Roboto').instances.find(r=>r.requestedWeight===500);
+      assert(Math.abs(+await page.locator('#scale').inputValue()-c.fit.scale)<0.0006);
+      assert(Math.abs(+await page.locator('#weight').inputValue()-c.fit.weight)<0.11);
+    }else assert.match(status,/live browser fit/);
+    assert.match(await page.locator('#css-export').innerText(),name==='Roboto'?/raw.githubusercontent.com/:/fonts.gstatic.com/);
+    if(name==='Roboto')assert.match(await page.locator('#smcp-support').textContent(),/Native small-caps \(smcp\): yes/);
+    assert.equal(await page.locator('#weight').isDisabled(),false);
+    assert.match(await page.locator('#css-export').innerText(),/::first-letter/);
+    assert.doesNotMatch(await page.locator('#export').textContent(),/scaleX|scaleY|<script>/);
+    assert.equal(await page.locator('#width').isDisabled(),false);
+    const baseWidth=await page.locator('#axis-wdth').inputValue();
+    const max=await page.locator('#width').getAttribute('max'),min=await page.locator('#width').getAttribute('min');
+    await page.locator('#width').fill(min);await page.locator('#width').dispatchEvent('input');
+    await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Loaded'),{},{timeout:90000});
+    const narrow=await page.locator('#size-ladder > .ladder-row:first-child .ladder-calibrated .css-smallcap').first().boundingBox();
+    await page.locator('#width').fill(max);await page.locator('#width').dispatchEvent('input');
+    await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Loaded'),{},{timeout:90000});
+    const wide=await page.locator('#size-ladder > .ladder-row:first-child .ladder-calibrated .css-smallcap').first().boundingBox();assert(wide.width>narrow.width);
+    const initialAxes=await page.locator('#size-ladder > .ladder-row:first-child .ladder-calibrated .css-smallcap').first().evaluate(e=>getComputedStyle(e,'::first-letter').fontVariationSettings);
+    assert(initialAxes.includes(`"wdth" ${+baseWidth}`));
+    const p=await browser.newPage({javaScriptEnabled:false});
+    await p.setContent(await page.locator('#export').textContent());
+    await p.evaluate(()=>document.fonts.ready);
+    await p.locator('.smcp').first().waitFor();
+    assert.equal(await p.locator('.smcp').first().textContent(),'Lord');
+    const before=await p.locator('.smcp').first().screenshot();
+    await p.locator('.smcp').first().evaluate(e=>e.style.fontVariant='normal');
+    const after=await p.locator('.smcp').first().screenshot();assert(before.equals(after),'Rich-text hint must not alter glyph rendering');
+    await p.close();
+    console.log(name,status,await page.locator('#smcp-support').textContent());
+  }
+  await browser.close();
+})().catch(async error=>{console.error(error);await browser?.close();process.exitCode=1;});

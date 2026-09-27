@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readShareState,readShareURL,shareURL} from '../src/share-state.js';
+const state={v:1,source:{kind:'google',value:'Source Sans 3'},sample:'The LORD & <GOD> é # ? +',selects:{'width-method':'transform'},numbers:{size:48},axes:{wght:550},overrides:{weight:630,scale:null},visible:[],overlay:['calibrated','transformed']};
+const link=shareURL('https://example.com/lab/?old=1#old',state);
+assert.equal(new URL(link).hash,'');assert.equal(new URL(link).searchParams.has('old'),false);
+const restored=readShareURL(link);
+assert.equal(restored.sample,state.sample);assert.deepEqual(restored.overrides,{weight:630});assert.deepEqual(restored.visible,[]);
+assert.equal(readShareState(null),null);
+for(const raw of ['broken','null','{}','{"v":2}',JSON.stringify({...state,source:{kind:'url',value:'javascript:alert(1)'}}),JSON.stringify({...state,source:{kind:'url',value:'https://user:secret@example.com/f.ttf'}})])assert.throws(()=>readShareState(raw));
+const filtered=readShareState(JSON.stringify({...state,selects:{target:'bad'},axes:{wght:550,invalid:1},overrides:{weight:'600'},overlay:['native','native']}));
+assert.deepEqual(filtered.selects,{});assert.deepEqual(filtered.axes,{wght:550});assert.deepEqual(filtered.overrides,{});assert.equal(filtered.overlay,undefined);
+console.log('Share URL versioning, Unicode/text round trip, null overrides, input validation and unsafe URLs passed.');
+
+assert.equal(shareURL('https://example.com/',{v:1,source:{kind:'google',value:'Roboto'}}),'https://example.com/?font=Roboto');
+assert.equal(readShareURL('https://example.com/?font=Roboto&wght=550&weight=640&code=1').axes.wght,550);
+assert.deepEqual(readShareURL('https://example.com/?font=Roboto&code=1').axes,{});
+assert.equal(readShareURL('https://example.com/?font=Roboto&lines=').visible.length,0);
+assert.deepEqual(readShareURL('https://example.com/?settings='+encodeURIComponent(JSON.stringify(state))),readShareState(JSON.stringify(state)));
+assert.equal(readShareURL(shareURL('https://example.com/',{v:1,source:{kind:'file',value:'My Font'}})).source.kind,'google');
+console.log('Short readable parameters, omitted defaults, best-effort font names and legacy links passed.');

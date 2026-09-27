@@ -1,0 +1,46 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+const {pathToFileURL}=require('node:url');
+let browser;
+(async()=>{
+  browser=await chromium.launch({headless:true});
+  const page=await browser.newPage();
+  const full=fs.readFileSync('fonts/SourceSans3.ttf'),subset=fs.readFileSync('/tmp/smallcaps-subset.woff2');
+  const source=require('../research/corpus.json').fonts.find(f=>f.name==='Alexandria').sourceURL;
+  await page.route(source,r=>r.fulfill({body:full}));
+  const stylesheetRequests=[];
+  await page.route('https://fonts.googleapis.com/**',r=>{stylesheetRequests.push(new URL(r.request().url()).searchParams.get('family'));return r.fulfill({contentType:'text/css',body:'@font-face {font-family: Alexandria; font-style: normal; font-weight: 200 900; src: url(https://fonts.gstatic.com/regular.woff2); unicode-range: U+0000-00FF;}'});});
+  await page.route('https://fonts.gstatic.com/regular.woff2',r=>r.fulfill({body:subset}));
+  await page.goto(pathToFileURL(path.resolve('index.html')).href);
+  await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Ready.'));
+  await page.locator('#google-font').fill('Alexandria');
+  await page.waitForFunction(()=>!document.querySelector('#google-load').disabled);
+  assert.match(await page.locator('#status').textContent(),/^Loaded Alexandria/);
+  const result=await page.evaluate(()=>{
+    const naive=document.querySelector('#size-ladder > .ladder-row:first-child .ladder-naive'),native=document.querySelector('#size-ladder > .ladder-row:first-child .ladder-native');
+    const inspect=family=>{
+      const probe=document.createElement('span');probe.textContent='lord';
+      Object.assign(probe.style,{fontFamily:family,fontSize:'48px',fontWeight:'500',fontSynthesis:'none'});document.body.append(probe);
+      const normal=probe.getBoundingClientRect().width;
+      probe.style.fontVariant='small-caps';const caps=probe.getBoundingClientRect().width;probe.remove();return {normal,caps};
+    };
+    const naiveFamily=getComputedStyle(naive).fontFamily,nativeFamily=getComputedStyle(native).fontFamily;
+    return {naiveFamily,nativeFamily,regular:inspect(naiveFamily),full:inspect(nativeFamily),ladder:[...document.querySelectorAll('.ladder-naive')].map(e=>getComputedStyle(e).fontFamily)};
+  });
+  assert.match(result.naiveFamily,/GoogleNaive_/);
+  assert.notEqual(result.naiveFamily,result.nativeFamily);
+  assert.equal(result.regular.normal,result.regular.caps,'Naive uses the regular subset without built-in smcp');
+  assert.notEqual(result.full.normal,result.full.caps,'Built-in still uses the full font with smcp');
+  assert(result.ladder.every(f=>f===result.naiveFamily));
+  const encodeSource=require('../research/corpus.json').fonts.find(f=>f.name==='Encode Sans').sourceURL;
+  await page.route(encodeSource,r=>r.fulfill({body:full}));
+  await page.locator('#google-font').fill('Encode Sans');
+  await page.waitForFunction(()=>!document.querySelector('#google-load').disabled);
+  assert.match(await page.locator('#status').textContent(),/^Loaded Encode Sans/);
+  assert(stylesheetRequests.includes('Encode Sans:wdth,wght@75..125,100..900'),'Naive must request the width axis as well as weight');
+  await page.locator('#upload').setInputFiles('fonts/SourceSans3.ttf');
+  await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Loaded Source Sans'));
+  assert.equal(await page.locator('#size-ladder > .ladder-row:first-child .ladder-naive').evaluate(e=>getComputedStyle(e).fontFamily),await page.locator('#size-ladder > .ladder-row:first-child .ladder-calibrated').evaluate(e=>getComputedStyle(e).fontFamily));
+  await browser.close();console.log('Naive Google preview uses the regular subset; built-in uses the full font; file imports reset the naive face.');
+})().catch(async e=>{console.error(e);await browser?.close();process.exitCode=1;});

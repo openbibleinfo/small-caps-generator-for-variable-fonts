@@ -1,0 +1,995 @@
+{
+  "schema": 1,
+  "method": "outline-fit-v1",
+  "fonts": [
+    {
+      "path": "fonts/InterVariable.woff2",
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+      "signature": "3427c16bbcb3509e787330141fe5f12048c430cb579a5d11a72bc9094e0193ab",
+      "name": "Inter Variable",
+      "axes": {
+        "opsz": {
+          "min": 14,
+          "default": 14,
+          "max": 32
+        },
+        "wght": {
+          "min": 100,
+          "default": 400,
+          "max": 900
+        }
+      },
+      "referenceKind": "phonetic",
+      "referenceLetters": "ABGHILMNRTY",
+      "unitsPerEm": 2048,
+      "staticWeight": 400,
+      "instances": {
+        "[{\"opsz\":14.0,\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "opsz": 14,
+            "wght": 400
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 525.9259259259259,
+            "scale": 0.7503355704697987,
+            "width": 1.0582984028923137,
+            "score": 0.009689034823165226,
+            "baseWeight": 400,
+            "errors": {
+              "width": 4.087391403604542,
+              "vertical": 5.942868996803376,
+              "horizontal": 6.698200342795458
+            },
+            "widthRange": [
+              0.9846699104290988,
+              1.1120796122393224
+            ],
+            "tracking": 0.026869013322748467,
+            "trackingSource": "reference glyph advances",
+            "trackingRange": [
+              -0.06818660408399789,
+              0.05442927335690728
+            ]
+          },
+          "xHeightScale": 0.7503355704697987,
+          "referenceScale": 0.7503355704697987,
+          "xHeight": 1118,
+          "capHeight": 1490,
+          "referenceHeight": 1118,
+          "strokeCompensation": 1.2625929761792674
+        },
+        "[{\"opsz\":32.0,\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "opsz": 32,
+            "wght": 400
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 529.6296296296296,
+            "scale": 0.7087248322147651,
+            "width": 1.0963933806902093,
+            "score": 0.014259546232261236,
+            "baseWeight": 400,
+            "errors": {
+              "width": 4.8032467048795215,
+              "vertical": 7.49760804379753,
+              "horizontal": 7.95676800191252
+            },
+            "widthRange": [
+              1.007797985976373,
+              1.1610823183026624
+            ],
+            "tracking": 0.02612955945174262,
+            "trackingSource": "reference glyph advances",
+            "trackingRange": [
+              -0.059118159502339035,
+              0.06440788407685642
+            ]
+          },
+          "xHeightScale": 0.7087248322147651,
+          "referenceScale": 0.7087248322147651,
+          "xHeight": 1056,
+          "capHeight": 1490,
+          "referenceHeight": 1056,
+          "strokeCompensation": 1.3325968013468015
+        },
+        "[{\"opsz\":14.0,\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "opsz": 14,
+            "wght": 500
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 651.8518518518518,
+            "scale": 0.7503355704697987,
+            "width": 1.0499810658019817,
+            "score": 0.0056906884280079045,
+            "baseWeight": 500,
+            "errors": {
+              "width": 3.6459582562782042,
+              "vertical": 4.780297255898704,
+              "horizontal": 4.556602991133107
+            },
+            "widthRange": [
+              0.9977087576370388,
+              1.1106956310216076
+            ],
+            "tracking": 0.03057584010542793,
+            "trackingSource": "reference glyph advances",
+            "trackingRange": [
+              -0.054096816979977334,
+              0.0678933865167838
+            ]
+          },
+          "xHeightScale": 0.7503355704697987,
+          "referenceScale": 0.7503355704697987,
+          "xHeight": 1118,
+          "capHeight": 1490,
+          "referenceHeight": 1118,
+          "strokeCompensation": 1.2828130858707072
+        },
+        "[{\"opsz\":32.0,\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "opsz": 32,
+            "wght": 500
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 650,
+            "scale": 0.7087248322147651,
+            "width": 1.098646839049231,
+            "score": 0.010135654787337547,
+            "baseWeight": 500,
+            "errors": {
+              "width": 4.552131804294106,
+              "vertical": 6.328916577789457,
+              "horizontal": 6.3702008493525035
+            },
+            "widthRange": [
+              1.0080624596838352,
+              1.161453757266519
+            ],
+            "tracking": 0.020306634325825364,
+            "trackingSource": "reference glyph advances",
+            "trackingRange": [
+              -0.05911695113372067,
+              0.0686521975656504
+            ]
+          },
+          "xHeightScale": 0.7087248322147651,
+          "referenceScale": 0.7087248322147651,
+          "xHeight": 1056,
+          "capHeight": 1490,
+          "referenceHeight": 1056,
+          "strokeCompensation": 1.3407139892731883
+        },
+        "[{\"opsz\":14.0,\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "opsz": 14,
+            "wght": 700
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 851.8518518518518,
+            "scale": 0.7503355704697987,
+            "width": 1.0426543231584176,
+            "score": 0.0030520025515267226,
+            "baseWeight": 700,
+            "errors": {
+              "width": 3.351889807315815,
+              "vertical": 3.544570147399813,
+              "horizontal": 2.5924665292037314
+            },
+            "widthRange": [
+              1.0068735978617904,
+              1.1116098802342738
+            ],
+            "tracking": 0.04810323999436619,
+            "trackingSource": "reference glyph advances",
+            "trackingRange": [
+              -0.030532043811325377,
+              0.08787760281375068
+            ]
+          },
+          "xHeightScale": 0.7503355704697987,
+          "referenceScale": 0.7503355704697987,
+          "xHeight": 1118,
+          "capHeight": 1490,
+          "referenceHeight": 1118,
+          "strokeCompensation": 1.2775105284654622
+        },
+        "[{\"opsz\":32.0,\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "opsz": 32,
+            "wght": 700
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 855.5555555555555,
+            "scale": 0.7087248322147651,
+            "width": 1.0938587593122762,
+            "score": 0.005638388427950533,
+            "baseWeight": 700,
+            "errors": {
+              "width": 4.359073642614403,
+              "vertical": 4.723045953275522,
+              "horizontal": 3.882679252915112
+            },
+            "widthRange": [
+              1.0077810492176962,
+              1.1604370787481249
+            ],
+            "tracking": 0.033658879212622464,
+            "trackingSource": "reference glyph advances",
+            "trackingRange": [
+              -0.05345927948572546,
+              0.08468693152605115
+            ]
+          },
+          "xHeightScale": 0.7087248322147651,
+          "referenceScale": 0.7087248322147651,
+          "xHeight": 1056,
+          "capHeight": 1490,
+          "referenceHeight": 1056,
+          "strokeCompensation": 1.3502204369028596
+        }
+      }
+    },
+    {
+      "path": "fonts/SourceSerif4.ttf",
+      "sha256": "97b2d4da6e3cb494b5a1e66ae176914d852ccabef49e0c02c0df25f3e39aca0b",
+      "signature": "1d82f84a08f340ef914b45536e72d5880847ae3cd250a5df14cf873f6ebacb33",
+      "name": "Source Serif 4",
+      "axes": {
+        "wght": {
+          "min": 200,
+          "default": 400,
+          "max": 900
+        },
+        "opsz": {
+          "min": 8,
+          "default": 20,
+          "max": 60
+        }
+      },
+      "referenceKind": "smcp",
+      "referenceLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "unitsPerEm": 1000,
+      "staticWeight": 400,
+      "instances": {
+        "[{\"opsz\":8.0,\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "wght": 400,
+            "opsz": 8
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 446.29629629629636,
+            "scale": 0.8524957773948286,
+            "width": 1.0359881665959099,
+            "score": 0.017234383684719475,
+            "baseWeight": 400,
+            "errors": {
+              "width": 0.40980261064704177,
+              "vertical": 4.247065733160046,
+              "horizontal": 12.415245922885271
+            },
+            "widthRange": [
+              1.0243530574983353,
+              1.043480373924718
+            ],
+            "tracking": 0.017014638723312988,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.00254678470597517,
+              0.02840840811944072
+            ]
+          },
+          "xHeightScale": 0.7582089552238805,
+          "referenceScale": 0.8507462686567164,
+          "xHeight": 508,
+          "capHeight": 670,
+          "referenceHeight": 570,
+          "strokeCompensation": 1.0666016894087071
+        },
+        "[{\"opsz\":20.0,\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "wght": 400,
+            "opsz": 20
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 486.80555555555554,
+            "scale": 0.8225681550962708,
+            "width": 1.0631366388037369,
+            "score": 0.008504051404041433,
+            "baseWeight": 400,
+            "errors": {
+              "width": 0.7190502593264424,
+              "vertical": 4.396467642089942,
+              "horizontal": 8.074314400432584
+            },
+            "widthRange": [
+              1.0490939404604178,
+              1.0829599536043828
+            ],
+            "tracking": 0.037969449172353044,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.007234279656087637,
+              0.053232757348729544
+            ]
+          },
+          "xHeightScale": 0.7089552238805971,
+          "referenceScale": 0.8194029850746268,
+          "xHeight": 475,
+          "capHeight": 670,
+          "referenceHeight": 549,
+          "strokeCompensation": 1.1756609683094628
+        },
+        "[{\"opsz\":60.0,\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "wght": 400,
+            "opsz": 60
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 460.8796296296296,
+            "scale": 0.8006682012001003,
+            "width": 1.105873063402135,
+            "score": 0.016857812174556872,
+            "baseWeight": 400,
+            "errors": {
+              "width": 0.30825718246417805,
+              "vertical": 5.424240721603165,
+              "horizontal": 11.792400597381771
+            },
+            "widthRange": [
+              1.099138305462934,
+              1.1140624285497416
+            ],
+            "tracking": 0.02796733354226636,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.02168561668632179,
+              0.03431293888253737
+            ]
+          },
+          "xHeightScale": 0.6746268656716418,
+          "referenceScale": 0.7985074626865671,
+          "xHeight": 452,
+          "capHeight": 670,
+          "referenceHeight": 535,
+          "strokeCompensation": 1.1901529768375154
+        },
+        "[{\"opsz\":8.0,\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "wght": 500,
+            "opsz": 8
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 553.2407407407408,
+            "scale": 0.8530934733253147,
+            "width": 1.038836667222358,
+            "score": 0.013098281306965899,
+            "baseWeight": 500,
+            "errors": {
+              "width": 0.41845738569530255,
+              "vertical": 3.9355121776748927,
+              "horizontal": 10.738689416562371
+            },
+            "widthRange": [
+              1.0286890966554543,
+              1.0464938387149496
+            ],
+            "tracking": 0.01799653643704783,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              -0.0021568454857479316,
+              0.02761601298181182
+            ]
+          },
+          "xHeightScale": 0.7635638079592932,
+          "referenceScale": 0.8510711631966476,
+          "xHeight": 509.3199877937138,
+          "capHeight": 667.030027464144,
+          "referenceHeight": 567.6900213610008,
+          "strokeCompensation": 1.0723579815336715
+        },
+        "[{\"opsz\":20.0,\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "wght": 500,
+            "opsz": 20
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 585.6481481481482,
+            "scale": 0.8229741064988206,
+            "width": 1.070822037154622,
+            "score": 0.008452052122811214,
+            "baseWeight": 500,
+            "errors": {
+              "width": 0.6403379181095401,
+              "vertical": 4.8130599470501805,
+              "horizontal": 7.806724186548708
+            },
+            "widthRange": [
+              1.0576990726703384,
+              1.0864623967032563
+            ],
+            "tracking": 0.03626026911677977,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.0075748936326702175,
+              0.04812269952625266
+            ]
+          },
+          "xHeightScale": 0.7150802243549831,
+          "referenceScale": 0.8198356855300807,
+          "xHeight": 476.97998169057064,
+          "capHeight": 667.030027464144,
+          "referenceHeight": 546.8550198352151,
+          "strokeCompensation": 1.1549861872915217
+        },
+        "[{\"opsz\":60.0,\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "wght": 500,
+            "opsz": 60
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 562.962962962963,
+            "scale": 0.7998526544976132,
+            "width": 1.110793496825009,
+            "score": 0.011536508534677718,
+            "baseWeight": 500,
+            "errors": {
+              "width": 0.2718127981485341,
+              "vertical": 4.617504593840141,
+              "horizontal": 9.693804953443465
+            },
+            "widthRange": [
+              1.1042181228921888,
+              1.1155726511188904
+            ],
+            "tracking": 0.027017992655114256,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.02102115913831125,
+              0.0332561080261929
+            ]
+          },
+          "xHeightScale": 0.6796095664794968,
+          "referenceScale": 0.7976103107183479,
+          "xHeight": 453.3199877937138,
+          "capHeight": 667.030027464144,
+          "referenceHeight": 532.030027464144,
+          "strokeCompensation": 1.1828382947795895
+        },
+        "[{\"opsz\":8.0,\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "wght": 700,
+            "opsz": 8
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 765.5092592592592,
+            "scale": 0.854399273713368,
+            "width": 1.0495050471798035,
+            "score": 0.004573302095085997,
+            "baseWeight": 700,
+            "errors": {
+              "width": 0.5006737479327492,
+              "vertical": 2.408124742170683,
+              "horizontal": 6.299466800859921
+            },
+            "widthRange": [
+              1.0310231826818224,
+              1.0596159415999495
+            ],
+            "tracking": 0.01938040038034088,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              -0.01660877577613416,
+              0.025853951709657503
+            ]
+          },
+          "xHeightScale": 0.781526861451461,
+          "referenceScale": 0.8521610340648983,
+          "xHeight": 513.6637168141593,
+          "capHeight": 657.2566371681415,
+          "referenceHeight": 560.0884955752211,
+          "strokeCompensation": 1.082846445947215
+        },
+        "[{\"opsz\":20.0,\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "wght": 700,
+            "opsz": 20
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 773.6111111111111,
+            "scale": 0.8237119162203267,
+            "width": 1.0978144968212995,
+            "score": 0.011234941761953133,
+            "baseWeight": 700,
+            "errors": {
+              "width": 0.5420373069939327,
+              "vertical": 5.461145122858411,
+              "horizontal": 9.068158971061209
+            },
+            "widthRange": [
+              1.0841318112591032,
+              1.1091106037547673
+            ],
+            "tracking": 0.030894027493201064,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.004357098893597112,
+              0.03780890422773209
+            ]
+          },
+          "xHeightScale": 0.735626767200754,
+          "referenceScale": 0.821287195368251,
+          "xHeight": 483.49557522123894,
+          "capHeight": 657.2566371681415,
+          "referenceHeight": 539.7964601769911,
+          "strokeCompensation": 1.1154946937775245
+        },
+        "[{\"opsz\":60.0,\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "wght": 700,
+            "opsz": 60
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 796.2962962962964,
+            "scale": 0.7976724697231833,
+            "width": 1.12358888481576,
+            "score": 0.012468639551017374,
+            "baseWeight": 700,
+            "errors": {
+              "width": 0.6139932824590829,
+              "vertical": 4.970640741632647,
+              "horizontal": 9.980087092650571
+            },
+            "widthRange": [
+              1.1019282414896818,
+              1.136545384944307
+            ],
+            "tracking": 0.02565305856683153,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.017586753503895002,
+              0.03318026914664288
+            ]
+          },
+          "xHeightScale": 0.6963242224316682,
+          "referenceScale": 0.7946007809344284,
+          "xHeight": 457.6637168141593,
+          "capHeight": 657.2566371681415,
+          "referenceHeight": 522.2566371681415,
+          "strokeCompensation": 1.1728229161675499
+        }
+      }
+    },
+    {
+      "path": "fonts/EBGaramond.ttf",
+      "sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+      "signature": "863eb90b7d92a44bb46a5075df5c0134c50e9e381ded89e20636d23afa0bdec9",
+      "name": "EB Garamond",
+      "axes": {
+        "wght": {
+          "min": 400,
+          "default": 400,
+          "max": 800
+        }
+      },
+      "referenceKind": "smcp",
+      "referenceLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "unitsPerEm": 1000,
+      "staticWeight": 400,
+      "instances": {
+        "[{\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "wght": 400
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 514.8148148148149,
+            "scale": 0.693024021439873,
+            "width": 1.0935424447472166,
+            "score": 0.05537271691859223,
+            "baseWeight": 400,
+            "errors": {
+              "width": 4.7621894799115685,
+              "vertical": 10.614001930916631,
+              "horizontal": 20.45462499176751
+            },
+            "widthRange": [
+              1.011148401895314,
+              1.2450738322483044
+            ],
+            "tracking": 0.04337674640729196,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              -0.019183437771267124,
+              0.10409149069452492
+            ]
+          },
+          "xHeightScale": 0.6202143950995406,
+          "referenceScale": 0.6937212863705973,
+          "xHeight": 405,
+          "capHeight": 653,
+          "referenceHeight": 453,
+          "strokeCompensation": 1.351407284768212
+        },
+        "[{\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "wght": 500
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 675.925925925926,
+            "scale": 0.6925638636463782,
+            "width": 1.088493781381165,
+            "score": 0.13068510846252926,
+            "baseWeight": 500,
+            "errors": {
+              "width": 4.06341864485547,
+              "vertical": 8.566394814487229,
+              "horizontal": 34.88490495077004
+            },
+            "widthRange": [
+              1.00288169883852,
+              1.2390355832173434
+            ],
+            "tracking": 0.04886051866706302,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              -0.00009347133943307784,
+              0.0941675803455366
+            ]
+          },
+          "xHeightScale": 0.6303122806014874,
+          "referenceScale": 0.6935493872297015,
+          "xHeight": 411.95947265625,
+          "capHeight": 653.5799560546875,
+          "referenceHeight": 453.28997802734375,
+          "strokeCompensation": 1.3857313248867784
+        },
+        "[{\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "wght": 700
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 800,
+            "scale": 0.6922290132245945,
+            "width": 1.114636631067011,
+            "score": 1.4119856696678057,
+            "baseWeight": 700,
+            "errors": {
+              "width": 4.117464757660272,
+              "vertical": 29.594627992201904,
+              "horizontal": 115.00896127976577
+            },
+            "widthRange": [
+              1.0244128104745265,
+              1.247369384404945
+            ],
+            "tracking": 0.05118745852521043,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.006152282704520977,
+              0.11690112783290892
+            ]
+          },
+          "xHeightScale": 0.6487232162386479,
+          "referenceScale": 0.6926096686980019,
+          "xHeight": 424.68017578125,
+          "capHeight": 654.6400146484375,
+          "referenceHeight": 453.4100036621094,
+          "strokeCompensation": 1.4126026987069253
+        }
+      }
+    },
+    {
+      "path": "fonts/SourceSans3.ttf",
+      "sha256": "042fe2cc0b933e328410d7acbd0aa6a1873dca5aef81875f4bc214b08825c7b9",
+      "signature": "edcb33472d61c6588aed898190efad50d6472516bbe90d414754c727a6e91495",
+      "name": "Source Sans 3",
+      "axes": {
+        "wght": {
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      },
+      "referenceKind": "smcp",
+      "referenceLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "unitsPerEm": 1000,
+      "staticWeight": 200,
+      "instances": {
+        "[{\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "wght": 400
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 504.6296296296297,
+            "scale": 0.7906941336041026,
+            "width": 1.0690900106254282,
+            "score": 0.0011889640875340638,
+            "baseWeight": 400,
+            "errors": {
+              "width": 0.7329726818921302,
+              "vertical": 2.4726134759931053,
+              "horizontal": 2.2887932456379256
+            },
+            "widthRange": [
+              1.049134511196001,
+              1.0928847275919091
+            ],
+            "tracking": 0.02904140019298862,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.0020906585934404253,
+              0.04503822067477623
+            ]
+          },
+          "xHeightScale": 0.7406383513296891,
+          "referenceScale": 0.7892086573402131,
+          "xHeight": 486.0957395293215,
+          "capHeight": 656.3199686549042,
+          "referenceHeight": 517.9734012477077,
+          "strokeCompensation": 1.2670920303512572
+        },
+        "[{\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "wght": 500
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 613.1944444444446,
+            "scale": 0.7962784668336927,
+            "width": 1.0645141943916168,
+            "score": 0.0009716533301118011,
+            "baseWeight": 500,
+            "errors": {
+              "width": 0.7557176964585359,
+              "vertical": 2.3216304469330997,
+              "horizontal": 1.9378999283375367
+            },
+            "widthRange": [
+              1.044571059527785,
+              1.0870384838289693
+            ],
+            "tracking": 0.02817100222027676,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.0017999748390306897,
+              0.044805201132226295
+            ]
+          },
+          "xHeightScale": 0.7459358292501428,
+          "referenceScale": 0.7945337463468218,
+          "xHeight": 488.6921879335444,
+          "capHeight": 655.1397168102324,
+          "referenceHeight": 520.5306135778299,
+          "strokeCompensation": 1.258599782070792
+        },
+        "[{\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "wght": 700
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 859.4907407407408,
+            "scale": 0.8119229145907998,
+            "width": 1.061490459813802,
+            "score": 0.008639366760756991,
+            "baseWeight": 700,
+            "errors": {
+              "width": 0.7773572495907649,
+              "vertical": 8.258617198703009,
+              "horizontal": 4.193402589707488
+            },
+            "widthRange": [
+              1.0441709966614448,
+              1.0834150634093682
+            ],
+            "tracking": 0.024080676546783943,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.001030958320654322,
+              0.04074637118313406
+            ]
+          },
+          "xHeightScale": 0.7612110671668785,
+          "referenceScale": 0.8101741952258668,
+          "xHeight": 496.1271406813757,
+          "capHeight": 651.760283160217,
+          "referenceHeight": 528.0393628895118,
+          "strokeCompensation": 1.2343150566567547
+        }
+      }
+    },
+    {
+      "path": "fonts/Alegreya.ttf",
+      "sha256": "ba5564634b93a8f8ba57b48cd4f1ae7417d2b4656fbac779028679b00de3cf12",
+      "signature": "0b8780d089c18a01c69c493858af349ea39b17bb17dfd0e4d7f0061e25ff6931",
+      "name": "Alegreya",
+      "axes": {
+        "wght": {
+          "min": 400,
+          "default": 400,
+          "max": 900
+        }
+      },
+      "referenceKind": "smcp",
+      "referenceLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "unitsPerEm": 1000,
+      "staticWeight": 400,
+      "instances": {
+        "[{\"wght\":400.0},\"reference\"]": {
+          "axes": {
+            "wght": 400
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 463.6574074074074,
+            "scale": 0.7800103769632857,
+            "width": 1.0500224569478513,
+            "score": 0.0008871876149123617,
+            "baseWeight": 400,
+            "errors": {
+              "width": 0.132304094951355,
+              "vertical": 2.017210380746579,
+              "horizontal": 2.187517784017072
+            },
+            "widthRange": [
+              1.0471356621327477,
+              1.0524817930821873
+            ],
+            "tracking": 0.026614180462377516,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.025574896188572636,
+              0.02834542122150999
+            ]
+          },
+          "xHeightScale": 0.7058823529411765,
+          "referenceScale": 0.7809597523219814,
+          "xHeight": 456,
+          "capHeight": 646,
+          "referenceHeight": 504.5,
+          "strokeCompensation": 1.2563516596684583
+        },
+        "[{\"wght\":500.0},\"reference\"]": {
+          "axes": {
+            "wght": 500
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 614.1203703703703,
+            "scale": 0.7795717121879318,
+            "width": 1.0529049521666585,
+            "score": 0.0004173709702844601,
+            "baseWeight": 500,
+            "errors": {
+              "width": 0.1502864161608972,
+              "vertical": 1.407486493554981,
+              "horizontal": 1.4731277834670078
+            },
+            "widthRange": [
+              1.049799272428756,
+              1.054955885839237
+            ],
+            "tracking": 0.024538182051507262,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.02330776251961235,
+              0.026659675019126947
+            ]
+          },
+          "xHeightScale": 0.7112145198637466,
+          "referenceScale": 0.7805826110604219,
+          "xHeight": 460.32303936527313,
+          "capHeight": 647.2351541043638,
+          "referenceHeight": 505.22050656087885,
+          "strokeCompensation": 1.2140812389019027
+        },
+        "[{\"wght\":700.0},\"reference\"]": {
+          "axes": {
+            "wght": 700
+          },
+          "target": "reference",
+          "fit": {
+            "weight": 807.4074074074074,
+            "scale": 0.7779376526763487,
+            "width": 1.0419152965130802,
+            "score": 0.02243640861713933,
+            "baseWeight": 700,
+            "errors": {
+              "width": 1.0707747170051614,
+              "vertical": 8.782579461507584,
+              "horizontal": 12.086514207128578
+            },
+            "widthRange": [
+              1.01800354086267,
+              1.0564827096190927
+            ],
+            "tracking": 0.030490723774300323,
+            "trackingSource": "native shaped words",
+            "trackingRange": [
+              0.015509312497758873,
+              0.04105271480549762
+            ]
+          },
+          "xHeightScale": 0.7175381636866753,
+          "referenceScale": 0.7798632198995898,
+          "xHeight": 465.47139247397223,
+          "capHeight": 648.7061121354207,
+          "referenceHeight": 505.90203737847355,
+          "strokeCompensation": 1.185807739744052
+        }
+      }
+    }
+  ],
+  "prior": {
+    "heightFraction": 0.1912820566286258,
+    "width": 1.0645141943916168,
+    "families": 5,
+    "tracking": 0.03057584010542793
+  },
+  "priorValidation": [
+    {
+      "name": "Inter Variable",
+      "x": 0.7503355704697987,
+      "reference": 0.7503355704697987,
+      "heightFraction": 0,
+      "width": 1.0499810658019817,
+      "heldOutHeightErrorPercent": 7.178607694400307,
+      "heldOutWidthErrorPercent": 1.684511325699778
+    },
+    {
+      "name": "Source Serif 4",
+      "x": 0.7150802243549831,
+      "reference": 0.8198356855300807,
+      "heightFraction": 0.36766651573393433,
+      "width": 1.070822037154622,
+      "heldOutHeightErrorPercent": -6.481408250791098,
+      "heldOutWidthErrorPercent": -1.1311369634929735
+    },
+    {
+      "name": "EB Garamond",
+      "x": 0.6303122806014874,
+      "reference": 0.6935493872297015,
+      "heightFraction": 0.17105547009000407,
+      "width": 1.088493781381165,
+      "heldOutHeightErrorPercent": 2.3820749643649775,
+      "heldOutWidthErrorPercent": -2.7362772862362994
+    },
+    {
+      "name": "Source Sans 3",
+      "x": 0.7459358292501428,
+      "reference": 0.7945337463468218,
+      "heightFraction": 0.1912820566286258,
+      "width": 1.0645141943916168,
+      "heldOutHeightErrorPercent": 0.4588254429974903,
+      "heldOutWidthErrorPercent": -0.24900557878342333
+    },
+    {
+      "name": "Alegreya",
+      "x": 0.7112145198637466,
+      "reference": 0.7805826110604219,
+      "heightFraction": 0.24020629833586646,
+      "width": 1.0529049521666585,
+      "heldOutHeightErrorPercent": -2.1841612460599125,
+      "heldOutWidthErrorPercent": 1.4021364013989457
+    }
+  ]
+}
